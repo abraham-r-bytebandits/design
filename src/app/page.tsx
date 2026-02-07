@@ -85,6 +85,15 @@ export default function Home() {
     <div className="2xl:container w-[80%] mx-auto mt-10">
       <h1 className="text-3xl font-bold mb-4">Ant Design Components</h1>
       <Separator className='my-6' />
+      <div>
+        <Space>
+          <h4 className='text-lg'>shadCN -</h4>
+          <Button type="primary" href="/shadCN">
+            Link
+          </Button>
+        </Space>
+      </div>
+      <Separator className='my-6' />
 
       {loading ? (
         <Skeleton.Button active />

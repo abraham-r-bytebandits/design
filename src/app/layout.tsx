@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ConfigProvider } from "antd";
 import "./globals.css";
+import { CurrencyProvider } from "@/lib/currencyContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,9 +35,17 @@ export default function RootLayout({
               borderRadius: 2,
               colorBgContainer: '#E8ECFD',
             },
+            components: {
+              Table: {
+                headerBg: '#6B84EF',
+                headerColor: '#fff',
+              },
+            },
           }}
         >
-          {children}
+          <CurrencyProvider>
+            {children}
+          </CurrencyProvider>
         </ConfigProvider>
       </body>
     </html>

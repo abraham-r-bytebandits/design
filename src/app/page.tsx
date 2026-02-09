@@ -87,6 +87,15 @@ export default function Home() {
       <Separator className='my-6' />
       <div>
         <Space>
+          <h4 className='text-lg'>Table -</h4>
+          <Button type="primary" href="/table">
+            Link
+          </Button>
+        </Space>
+      </div>
+      <Separator className='my-6' />
+      <div>
+        <Space>
           <h4 className='text-lg'>shadCN -</h4>
           <Button type="primary" href="/shadCN">
             Link
@@ -306,6 +315,7 @@ export default function Home() {
           ]}
         />
       </div>
+
 
 
 

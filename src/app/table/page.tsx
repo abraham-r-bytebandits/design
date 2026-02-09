@@ -3,7 +3,6 @@
 import React, { useContext, useMemo } from "react";
 import { Divider, Table, Select, Button } from "antd";
 import type { TableProps } from "antd";
-import { HolderOutlined } from "@ant-design/icons";
 import type { DragEndEvent } from "@dnd-kit/core";
 import { DndContext } from "@dnd-kit/core";
 import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
@@ -26,27 +25,7 @@ const rowSelection: TableProps<DataType>["rowSelection"] = {
     }),
 };
 
-interface RowContextProps {
-    setActivatorNodeRef?: (element: HTMLElement | null) => void;
-    listeners?: any;
-}
-
-const RowContext = React.createContext<RowContextProps>({});
-
-const DragHandle: React.FC = () => {
-    const { setActivatorNodeRef, listeners } = useContext(RowContext);
-
-    return (
-        <Button
-            type="text"
-            size="small"
-            icon={<HolderOutlined />}
-            style={{ cursor: "move" }}
-            ref={setActivatorNodeRef}
-            {...listeners}
-        />
-    );
-};
+import RowContext, { RowContextProps } from "./RowContext";
 
 interface RowProps extends React.HTMLAttributes<HTMLTableRowElement> {
     "data-row-key": string;

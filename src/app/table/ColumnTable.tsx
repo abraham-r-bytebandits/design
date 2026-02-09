@@ -1,10 +1,11 @@
 import type { TableColumnsType } from "antd";
-import { Tag, Flex } from "antd";
+import { Tag, Flex, Button } from "antd";
 import type { DataType } from "@/lib/tableData";
 import { useTableSearch } from "./tableLogic";
 import { useCurrency } from "@/lib/currencyContext";
-import React from "react";
-import DragHandle from "./page";
+import React, { useContext } from "react";
+import { HolderOutlined } from "@ant-design/icons";
+import RowContext from "./RowContext";
 
 export const useTableColumns = (
     tableData: DataType[],
@@ -31,16 +32,23 @@ export const useTableColumns = (
         return !record.product || record.price == null || record.product.trim() === "";
     };
 
-    return [
-        // ✅ Drag handle column (NEW)
-        {
-            key: "sort",
-            width: 48,
-            fixed: "start",
-            align: "center",
-            render: () => <DragHandle />,
-        },
+    const DragHandle: React.FC = () => {
+        const { setActivatorNodeRef, listeners } = useContext(RowContext);
 
+        return (
+            <Button
+                type="text"
+                size="small"
+                icon={<HolderOutlined />}
+                style={{ cursor: "move" }}
+                ref={setActivatorNodeRef}
+                {...listeners}
+            />
+        );
+    };
+
+    return [
+        { key: 'sort', align: 'center', width: 80, render: () => <DragHandle /> },
         {
             title: "Name",
             dataIndex: "name",
@@ -49,7 +57,7 @@ export const useTableColumns = (
             render: (text: string) => <a>{text}</a>,
             sorter: (a, b) => a.name.length - b.name.length,
             ...getColumnSearchProps("name"),
-            onCell: (record) => (isRowIncomplete(record) ? { colSpan: 6 } : {}),
+            onCell: (record) => (isRowIncomplete(record) ? { colSpan: 5 } : {}),
         },
         {
             title: "Age",

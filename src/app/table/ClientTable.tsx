@@ -114,7 +114,7 @@ const ClientTable: React.FC = () => {
                             bordered
                             scroll={{
                                 x: isMobile ? "max-content" : "max-content",
-                                y: isMobile ? 400 : undefined
+                                y: isMobile ? undefined : undefined
                             }}
                             dataSource={tableData}
                             rowKey="key"
@@ -132,11 +132,10 @@ const ClientTable: React.FC = () => {
                                 ),
                             }}
                             pagination={{
-                                showSizeChanger: !isMobile,
-                                pageSizeOptions: isMobile ? ["10", "20"] : ["10", "20", "50", "100"],
+                                showSizeChanger: true,
+                                pageSizeOptions: ["10", "20", "50", "100"],
                                 defaultPageSize: 10,
                                 size: isMobile ? "small" : "middle",
-                                showLessItems: isMobile,
                                 simple: isMobile,
                             }}
                             size={isMobile ? "small" : "middle"}

@@ -107,4 +107,3 @@ export const useTableSearch = () => {
 
     return { getColumnSearchProps };
 };
-

@@ -35,16 +35,26 @@ export const useTableColumns = (
 
     const DragHandle: React.FC = () => {
         const { setActivatorNodeRef, listeners } = useContext(RowContext);
-
         return (
-            <Button
-                type="text"
-                size="small"
-                icon={<HolderOutlined />}
-                style={{ cursor: "move" }}
+            <span
                 ref={setActivatorNodeRef}
                 {...listeners}
-            />
+                style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    cursor: "move",
+                    padding: "4px",
+                    borderRadius: "4px",
+                    background: "transparent",
+                    touchAction: "none",
+                    fontSize: "18px",
+                }}
+                tabIndex={0}
+                aria-label="Drag row"
+            >
+                <HolderOutlined />
+            </span>
         );
     };
 

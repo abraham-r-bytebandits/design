@@ -61,7 +61,6 @@ export const useTableColumns = (
     const baseColumns: TableColumnsType<DataType> = [
         {
             key: 'sort',
-            align: 'center' as const,
             width: isMobile ? 60 : 80,
             render: () => <DragHandle />
         },
@@ -69,7 +68,6 @@ export const useTableColumns = (
             title: "Name",
             dataIndex: "name",
             width: isMobile ? 120 : 160,
-            fixed: "start" as const,
             render: (text: string) => <a>{text}</a>,
             sorter: (a: DataType, b: DataType) => a.name.length - b.name.length,
             ...getColumnSearchProps("name"),
@@ -79,7 +77,6 @@ export const useTableColumns = (
             title: "Age",
             dataIndex: "age",
             width: isMobile ? 80 : 100,
-            fixed: "start" as const,
             sorter: (a: DataType, b: DataType) => a.age - b.age,
             ...getColumnSearchProps("age"),
             onCell: (record: DataType) => (isRowIncomplete(record) ? { colSpan: 0 } : {}),

@@ -31,13 +31,13 @@ export default function RootLayout({
         <ConfigProvider
           theme={{
             token: {
-              colorPrimary: '#3455EA',
+              colorPrimary: '#555555',
               borderRadius: 2,
-              colorBgContainer: '#E8ECFD',
+              colorBgContainer: '#FFFFFF',
             },
             components: {
               Table: {
-                headerBg: '#6B84EF',
+                headerBg: '#C3CDF4',
                 headerColor: '#fff',
               },
             },
